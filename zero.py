@@ -10,13 +10,23 @@ while player_score < 5 and computer_score < 5:
     computer_bet = 0
     computer_target = 0
 
-    computer_bet = random.randint(0,2)
-    computer_target = random.randint(0,4)
+    computer_bet = random.randint(0, 2)
+    computer_target = random.randint(0, 4)
 
 
     if turn == 0:
-        player_target = int(input("목표 숫자(0~4)를 입력하세요:"))
-        player_bet = int(input("배팅 값(0~2)을 입력하세요:"))
+        while True:
+            player_target = int(input("목표 숫자(0~4)를 입력하세요:"))
+            if player_target >= 0 and player_target <= 4:
+                break
+            else:
+                print("0에서 4사이의 수를 입력해주세요.")
+        while True:
+            player_bet = int(input("배팅 값(0~2)을 입력하세요:"))
+            if player_bet >= 0 and player_bet <= 2:
+                break
+            else:
+                print("0에서 2사이의 수를 입력해주세요.")
         temp = player_bet + computer_bet
         if temp == player_target:
             player_score = player_score + 1
@@ -28,7 +38,12 @@ while player_score < 5 and computer_score < 5:
         turn = turn + 1
 
     else:
-        player_bet = int(input("배팅 값(0~2)을 입력하세요:"))
+        while True:
+            player_bet = int(input("배팅 값(0~2)을 입력하세요:"))
+            if player_bet >= 0 and player_bet <= 2:
+                break
+            else:
+                print("0에서 2사이의 수를 입력해주세요.")
         temp = player_bet + computer_bet
         if temp == computer_target:
             computer_score = computer_score + 1
